@@ -1,11 +1,3 @@
-# Privacy Policy
+# Break Reminder by Spikard
 
-We don’t store your data, period.
-
-## Contacting Us
-
-If you have questions regarding this privacy policy, you may email maspikard@gmail.com.
-
-## Changes to this policy
-
-If we decide to change our privacy policy, we will post those changes on this page.
+### Privacy Policy: https://maspikard.github.io/BreakReminder/
