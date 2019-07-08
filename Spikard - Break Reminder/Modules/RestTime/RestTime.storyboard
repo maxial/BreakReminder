@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="qnb-od-DnX">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="f6t-gR-nX4">
+            <objects>
+                <windowController storyboardIdentifier="RestTimeWindowController" id="qnb-od-DnX" customClass="RestTimeWindowController" customModule="Spikard___Break_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="kAk-xx-hQ8">
+                        <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="960" height="540"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="qnb-od-DnX" id="peL-xS-Nci"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="ZVo-LD-vMc" kind="relationship" relationship="window.shadowedContentViewController" id="bQr-uj-j4Z"/>
+                    </connections>
+                </windowController>
+                <customObject id="bNA-sU-bix" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="164"/>
+        </scene>
+        <!--Rest Time View Controller-->
+        <scene sceneID="NNH-fs-uuP">
+            <objects>
+                <viewController storyboardIdentifier="RestTimeViewController" id="ZVo-LD-vMc" customClass="RestTimeViewController" customModule="Spikard___Break_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="YhS-5H-DJK">
+                        <rect key="frame" x="0.0" y="0.0" width="960" height="540"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="gcX-Wu-bTx">
+                                <rect key="frame" x="240" y="161" width="480" height="219"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nkd-gk-pdU">
+                                        <rect key="frame" x="19" y="105" width="442" height="84"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Time for a break" id="iRI-UH-pQL">
+                                            <font key="font" metaFont="systemUltraLight" size="70"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="WAH-iW-oYJ">
+                                        <rect key="frame" x="20" y="49" width="440" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="O5r-VC-kT9"/>
+                                        </constraints>
+                                    </progressIndicator>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v9a-Yi-Xze">
+                                        <rect key="frame" x="398" y="22" width="64" height="18"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="00:05:00" id="4vO-gD-RKJ">
+                                            <font key="font" metaFont="systemThin" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oCd-hf-Mdu">
+                                        <rect key="frame" x="184" y="9" width="112" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="E3B-jf-inE"/>
+                                            <constraint firstAttribute="width" constant="100" id="uN1-DQ-RAP"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="Skip break" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kAM-Oi-3Zb">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="skipButtonClicked:" target="ZVo-LD-vMc" id="2xw-YS-WYi"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coF-kr-zab">
+                                        <rect key="frame" x="18" y="22" width="64" height="18"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="00:00:00" id="JTj-1w-XIJ">
+                                            <font key="font" metaFont="systemThin" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nkd-gk-pdU" firstAttribute="centerX" secondItem="gcX-Wu-bTx" secondAttribute="centerX" id="BFV-tH-UZs"/>
+                                    <constraint firstItem="v9a-Yi-Xze" firstAttribute="centerY" secondItem="oCd-hf-Mdu" secondAttribute="centerY" id="COp-cs-Egp"/>
+                                    <constraint firstItem="coF-kr-zab" firstAttribute="leading" secondItem="WAH-iW-oYJ" secondAttribute="leading" id="GVX-Pa-pxj"/>
+                                    <constraint firstAttribute="bottom" secondItem="oCd-hf-Mdu" secondAttribute="bottom" constant="16" id="I2N-uy-opN"/>
+                                    <constraint firstItem="WAH-iW-oYJ" firstAttribute="top" secondItem="nkd-gk-pdU" secondAttribute="bottom" constant="30" id="I9K-Vp-TaL"/>
+                                    <constraint firstItem="WAH-iW-oYJ" firstAttribute="leading" secondItem="gcX-Wu-bTx" secondAttribute="leading" constant="20" id="KMw-aR-SZB"/>
+                                    <constraint firstAttribute="trailing" secondItem="WAH-iW-oYJ" secondAttribute="trailing" constant="20" id="L5c-iu-S1x"/>
+                                    <constraint firstItem="coF-kr-zab" firstAttribute="centerY" secondItem="oCd-hf-Mdu" secondAttribute="centerY" id="Vqk-da-ucd"/>
+                                    <constraint firstAttribute="bottom" secondItem="WAH-iW-oYJ" secondAttribute="bottom" constant="50" id="YsX-Si-Hdi"/>
+                                    <constraint firstItem="nkd-gk-pdU" firstAttribute="top" secondItem="gcX-Wu-bTx" secondAttribute="top" constant="30" id="jB7-ap-d1H"/>
+                                    <constraint firstItem="v9a-Yi-Xze" firstAttribute="trailing" secondItem="WAH-iW-oYJ" secondAttribute="trailing" id="n5B-RR-nhm"/>
+                                    <constraint firstItem="oCd-hf-Mdu" firstAttribute="centerX" secondItem="gcX-Wu-bTx" secondAttribute="centerX" id="pSP-Jv-2SR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="gcX-Wu-bTx" firstAttribute="width" secondItem="YhS-5H-DJK" secondAttribute="width" multiplier="1:2" id="BCS-WD-Fts"/>
+                            <constraint firstItem="gcX-Wu-bTx" firstAttribute="centerY" secondItem="YhS-5H-DJK" secondAttribute="centerY" id="icZ-n6-MoU"/>
+                            <constraint firstItem="gcX-Wu-bTx" firstAttribute="centerX" secondItem="YhS-5H-DJK" secondAttribute="centerX" id="xqa-We-rVp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="gcX-Wu-bTx" id="Pth-qb-p5y"/>
+                        <outlet property="leftTimeLabel" destination="v9a-Yi-Xze" id="La4-gf-pPe"/>
+                        <outlet property="pastTimeLabel" destination="coF-kr-zab" id="ydL-5h-NLI"/>
+                        <outlet property="progressIndicator" destination="WAH-iW-oYJ" id="pB6-HB-i6u"/>
+                    </connections>
+                </viewController>
+                <customObject id="egB-aC-OSw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="871"/>
+        </scene>
+    </scenes>
+</document>

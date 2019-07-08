@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="TOz-WM-1ew">
+            <objects>
+                <windowController storyboardIdentifier="FirstWindowController" id="ECu-vN-HQm" customClass="FirstWindowController" customModule="Spikard___Break_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Break Reminder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="sCU-N8-B8X">
+                        <windowStyleMask key="styleMask" titled="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="200"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="ECu-vN-HQm" id="vpn-G5-DXn"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="a9p-pE-sLb" kind="relationship" relationship="window.shadowedContentViewController" id="yUW-x9-Gqd"/>
+                    </connections>
+                </windowController>
+                <customObject id="Khm-Wa-abI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="203" y="-5"/>
+        </scene>
+        <!--First View Controller-->
+        <scene sceneID="m41-9X-Oyi">
+            <objects>
+                <viewController storyboardIdentifier="FirstViewController" id="a9p-pE-sLb" customClass="FirstViewController" customModule="Spikard___Break_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="7Uo-Ut-CKg">
+                        <rect key="frame" x="0.0" y="0.0" width="481" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-hd-Xmp">
+                                <rect key="frame" x="59" y="94" width="363" height="42"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="ucf-U9-Y5V">
+                                    <font key="font" metaFont="systemThin" size="17"/>
+                                    <string key="title">You can see the app status item as an eye
+in the menu bar. Click on it to view the settings.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d24-Us-cki">
+                                <rect key="frame" x="195" y="13" width="92" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="H5e-Rk-g0z"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AfK-zt-gRI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="okButtonClicked:" target="a9p-pE-sLb" id="HZv-9U-zei"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d24-Us-cki" secondAttribute="bottom" constant="20" id="HfX-rU-qHb"/>
+                            <constraint firstItem="pwN-hd-Xmp" firstAttribute="centerX" secondItem="7Uo-Ut-CKg" secondAttribute="centerX" id="TPa-Au-Rec"/>
+                            <constraint firstItem="d24-Us-cki" firstAttribute="centerX" secondItem="7Uo-Ut-CKg" secondAttribute="centerX" id="Vma-5y-YYZ"/>
+                            <constraint firstItem="pwN-hd-Xmp" firstAttribute="centerY" secondItem="7Uo-Ut-CKg" secondAttribute="centerY" constant="-15" id="Z9C-qv-qGR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Rx8-ry-mrO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="204" y="426"/>
+        </scene>
+    </scenes>
+</document>
