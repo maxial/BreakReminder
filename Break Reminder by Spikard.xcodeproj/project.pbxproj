@@ -14,7 +14,7 @@
 		424C49EA229C53C500CBFF18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424C49E9229C53C500CBFF18 /* AppDelegate.swift */; };
 		424C49EE229C53C600CBFF18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 424C49ED229C53C600CBFF18 /* Assets.xcassets */; };
 		424C49F1229C53C600CBFF18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 424C49EF229C53C600CBFF18 /* Main.storyboard */; };
-		424C49F8229C554200CBFF18 /* Spikard - Break Reminder Launcher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 424C49E7229C53C500CBFF18 /* Spikard - Break Reminder Launcher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		424C49F8229C554200CBFF18 /* Break Reminder by Spikard Launcher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 424C49E7229C53C500CBFF18 /* Break Reminder by Spikard Launcher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		424C49FB229C556B00CBFF18 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 424C49FA229C556B00CBFF18 /* ServiceManagement.framework */; };
 		424C49FF229C59AC00CBFF18 /* NSNotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424C49FE229C59AC00CBFF18 /* NSNotificationNameExtension.swift */; };
 		426E61A2229AEAD000E876F9 /* RestTimeWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426E61A0229AEAD000E876F9 /* RestTimeWindowController.swift */; };
@@ -46,7 +46,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				424C49F8229C554200CBFF18 /* Spikard - Break Reminder Launcher.app in CopyFiles */,
+				424C49F8229C554200CBFF18 /* Break Reminder by Spikard Launcher.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 		421B0E1A229B0B4200C069CE /* NSStoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardExtension.swift; sourceTree = "<group>"; };
 		424C49DE229BE35700CBFF18 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
 		424C49E1229C23EC00CBFF18 /* NSFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFontExtension.swift; sourceTree = "<group>"; };
-		424C49E7229C53C500CBFF18 /* Spikard - Break Reminder Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spikard - Break Reminder Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		424C49E7229C53C500CBFF18 /* Break Reminder by Spikard Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Break Reminder by Spikard Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		424C49E9229C53C500CBFF18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		424C49ED229C53C600CBFF18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		424C49F0229C53C600CBFF18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		424C49FA229C556B00CBFF18 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		424C49FE229C59AC00CBFF18 /* NSNotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationNameExtension.swift; sourceTree = "<group>"; };
 		426E61A0229AEAD000E876F9 /* RestTimeWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimeWindowController.swift; sourceTree = "<group>"; };
-		4283F0312299D5C90051FAD6 /* Spikard - Break Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spikard - Break Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4283F0312299D5C90051FAD6 /* Break Reminder by Spikard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Break Reminder by Spikard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4283F0342299D5C90051FAD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4283F0362299D5C90051FAD6 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		4283F0382299D5CA0051FAD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		424C49E8229C53C500CBFF18 /* Spikard - Break Reminder Launcher */ = {
+		424C49E8229C53C500CBFF18 /* Break Reminder by Spikard Launcher */ = {
 			isa = PBXGroup;
 			children = (
 				424C49E9229C53C500CBFF18 /* AppDelegate.swift */,
@@ -145,7 +145,7 @@
 				424C49FE229C59AC00CBFF18 /* NSNotificationNameExtension.swift */,
 				424C49FC229C595200CBFF18 /* Resources */,
 			);
-			path = "Spikard - Break Reminder Launcher";
+			path = "Break Reminder by Spikard Launcher";
 			sourceTree = "<group>";
 		};
 		424C49F9229C556B00CBFF18 /* Frameworks */ = {
@@ -170,8 +170,8 @@
 		4283F0282299D5C90051FAD6 = {
 			isa = PBXGroup;
 			children = (
-				4283F0332299D5C90051FAD6 /* Spikard - Break Reminder */,
-				424C49E8229C53C500CBFF18 /* Spikard - Break Reminder Launcher */,
+				4283F0332299D5C90051FAD6 /* Break Reminder by Spikard */,
+				424C49E8229C53C500CBFF18 /* Break Reminder by Spikard Launcher */,
 				4283F0322299D5C90051FAD6 /* Products */,
 				424C49F9229C556B00CBFF18 /* Frameworks */,
 			);
@@ -180,13 +180,13 @@
 		4283F0322299D5C90051FAD6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4283F0312299D5C90051FAD6 /* Spikard - Break Reminder.app */,
-				424C49E7229C53C500CBFF18 /* Spikard - Break Reminder Launcher.app */,
+				4283F0312299D5C90051FAD6 /* Break Reminder by Spikard.app */,
+				424C49E7229C53C500CBFF18 /* Break Reminder by Spikard Launcher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4283F0332299D5C90051FAD6 /* Spikard - Break Reminder */ = {
+		4283F0332299D5C90051FAD6 /* Break Reminder by Spikard */ = {
 			isa = PBXGroup;
 			children = (
 				4283F0342299D5C90051FAD6 /* AppDelegate.swift */,
@@ -196,7 +196,7 @@
 				4290C8F6229A7FCF00BC8ECC /* Extensions */,
 				4290C8F7229A7FD800BC8ECC /* Resources */,
 			);
-			path = "Spikard - Break Reminder";
+			path = "Break Reminder by Spikard";
 			sourceTree = "<group>";
 		};
 		4290C8F6229A7FCF00BC8ECC /* Extensions */ = {
@@ -257,9 +257,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		424C49E6229C53C500CBFF18 /* Spikard - Break Reminder Launcher */ = {
+		424C49E6229C53C500CBFF18 /* Break Reminder by Spikard Launcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 424C49F4229C53C600CBFF18 /* Build configuration list for PBXNativeTarget "Spikard - Break Reminder Launcher" */;
+			buildConfigurationList = 424C49F4229C53C600CBFF18 /* Build configuration list for PBXNativeTarget "Break Reminder by Spikard Launcher" */;
 			buildPhases = (
 				424C49E3229C53C500CBFF18 /* Sources */,
 				424C49E4229C53C500CBFF18 /* Frameworks */,
@@ -269,14 +269,14 @@
 			);
 			dependencies = (
 			);
-			name = "Spikard - Break Reminder Launcher";
+			name = "Break Reminder by Spikard Launcher";
 			productName = "Spikard - Break Reminder Launcher";
-			productReference = 424C49E7229C53C500CBFF18 /* Spikard - Break Reminder Launcher.app */;
+			productReference = 424C49E7229C53C500CBFF18 /* Break Reminder by Spikard Launcher.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4283F0302299D5C90051FAD6 /* Spikard - Break Reminder */ = {
+		4283F0302299D5C90051FAD6 /* Break Reminder by Spikard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4283F0412299D5CA0051FAD6 /* Build configuration list for PBXNativeTarget "Spikard - Break Reminder" */;
+			buildConfigurationList = 4283F0412299D5CA0051FAD6 /* Build configuration list for PBXNativeTarget "Break Reminder by Spikard" */;
 			buildPhases = (
 				4283F02D2299D5C90051FAD6 /* Sources */,
 				4283F02E2299D5C90051FAD6 /* Frameworks */,
@@ -287,9 +287,9 @@
 			);
 			dependencies = (
 			);
-			name = "Spikard - Break Reminder";
+			name = "Break Reminder by Spikard";
 			productName = "Spikard - Break Reminder";
-			productReference = 4283F0312299D5C90051FAD6 /* Spikard - Break Reminder.app */;
+			productReference = 4283F0312299D5C90051FAD6 /* Break Reminder by Spikard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -310,7 +310,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4283F02C2299D5C90051FAD6 /* Build configuration list for PBXProject "Spikard - Break Reminder" */;
+			buildConfigurationList = 4283F02C2299D5C90051FAD6 /* Build configuration list for PBXProject "Break Reminder by Spikard" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -323,8 +323,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4283F0302299D5C90051FAD6 /* Spikard - Break Reminder */,
-				424C49E6229C53C500CBFF18 /* Spikard - Break Reminder Launcher */,
+				4283F0302299D5C90051FAD6 /* Break Reminder by Spikard */,
+				424C49E6229C53C500CBFF18 /* Break Reminder by Spikard Launcher */,
 			);
 		};
 /* End PBXProject section */
@@ -415,11 +415,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Spikard - Break Reminder Launcher/Resources/SpikardBreakReminderLauncher.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Break Reminder by Spikard Launcher/Resources/SpikardBreakReminderLauncher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8Q4KTDMYNZ;
-				INFOPLIST_FILE = "$(SRCROOT)/Spikard - Break Reminder Launcher/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Break Reminder by Spikard Launcher/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -436,11 +436,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Spikard - Break Reminder Launcher/Resources/SpikardBreakReminderLauncher.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Break Reminder by Spikard Launcher/Resources/SpikardBreakReminderLauncher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8Q4KTDMYNZ;
-				INFOPLIST_FILE = "$(SRCROOT)/Spikard - Break Reminder Launcher/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Break Reminder by Spikard Launcher/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -572,11 +572,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Spikard - Break Reminder/Resources/SpikardBreakReminder.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Break Reminder by Spikard/Resources/SpikardBreakReminder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8Q4KTDMYNZ;
-				INFOPLIST_FILE = "$(SRCROOT)/Spikard - Break Reminder/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Break Reminder by Spikard/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -593,11 +593,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Spikard - Break Reminder/Resources/SpikardBreakReminder.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Break Reminder by Spikard/Resources/SpikardBreakReminder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8Q4KTDMYNZ;
-				INFOPLIST_FILE = "$(SRCROOT)/Spikard - Break Reminder/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Break Reminder by Spikard/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -613,7 +613,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		424C49F4229C53C600CBFF18 /* Build configuration list for PBXNativeTarget "Spikard - Break Reminder Launcher" */ = {
+		424C49F4229C53C600CBFF18 /* Build configuration list for PBXNativeTarget "Break Reminder by Spikard Launcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				424C49F5229C53C600CBFF18 /* Debug */,
@@ -622,7 +622,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4283F02C2299D5C90051FAD6 /* Build configuration list for PBXProject "Spikard - Break Reminder" */ = {
+		4283F02C2299D5C90051FAD6 /* Build configuration list for PBXProject "Break Reminder by Spikard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4283F03F2299D5CA0051FAD6 /* Debug */,
@@ -631,7 +631,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4283F0412299D5CA0051FAD6 /* Build configuration list for PBXNativeTarget "Spikard - Break Reminder" */ = {
+		4283F0412299D5CA0051FAD6 /* Build configuration list for PBXNativeTarget "Break Reminder by Spikard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4283F0422299D5CA0051FAD6 /* Debug */,

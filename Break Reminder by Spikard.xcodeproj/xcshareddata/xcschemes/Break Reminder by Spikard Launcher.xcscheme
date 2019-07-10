@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4283F0302299D5C90051FAD6"
-               BuildableName = "Spikard - Break Reminder.app"
-               BlueprintName = "Spikard - Break Reminder"
-               ReferencedContainer = "container:Spikard - Break Reminder.xcodeproj">
+               BlueprintIdentifier = "424C49E6229C53C500CBFF18"
+               BuildableName = "Break Reminder by Spikard Launcher.app"
+               BlueprintName = "Break Reminder by Spikard Launcher"
+               ReferencedContainer = "container:Break Reminder by Spikard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4283F0302299D5C90051FAD6"
-            BuildableName = "Spikard - Break Reminder.app"
-            BlueprintName = "Spikard - Break Reminder"
-            ReferencedContainer = "container:Spikard - Break Reminder.xcodeproj">
+            BlueprintIdentifier = "424C49E6229C53C500CBFF18"
+            BuildableName = "Break Reminder by Spikard Launcher.app"
+            BlueprintName = "Break Reminder by Spikard Launcher"
+            ReferencedContainer = "container:Break Reminder by Spikard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4283F0302299D5C90051FAD6"
-            BuildableName = "Spikard - Break Reminder.app"
-            BlueprintName = "Spikard - Break Reminder"
-            ReferencedContainer = "container:Spikard - Break Reminder.xcodeproj">
+            BlueprintIdentifier = "424C49E6229C53C500CBFF18"
+            BuildableName = "Break Reminder by Spikard Launcher.app"
+            BlueprintName = "Break Reminder by Spikard Launcher"
+            ReferencedContainer = "container:Break Reminder by Spikard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4283F0302299D5C90051FAD6"
-            BuildableName = "Spikard - Break Reminder.app"
-            BlueprintName = "Spikard - Break Reminder"
-            ReferencedContainer = "container:Spikard - Break Reminder.xcodeproj">
+            BlueprintIdentifier = "424C49E6229C53C500CBFF18"
+            BuildableName = "Break Reminder by Spikard Launcher.app"
+            BlueprintName = "Break Reminder by Spikard Launcher"
+            ReferencedContainer = "container:Break Reminder by Spikard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
