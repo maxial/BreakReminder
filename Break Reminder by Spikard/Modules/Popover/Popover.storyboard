@@ -9,7 +9,7 @@
         <!--Popover View Controller-->
         <scene sceneID="0WA-cR-QDu">
             <objects>
-                <viewController storyboardIdentifier="PopoverViewController" id="TQu-Ny-Kt8" customClass="PopoverViewController" customModule="Spikard___Break_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopoverViewController" id="TQu-Ny-Kt8" customClass="PopoverViewController" customModule="Break_Reminder_by_Spikard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9qA-JL-7jD">
                         <rect key="frame" x="0.0" y="0.0" width="252" height="348"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -198,7 +198,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="8k2-6x-WDq">
-                                            <rect key="frame" x="60" y="14" width="22" height="22"/>
+                                            <rect key="frame" x="115" y="14" width="22" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="22" id="Z6U-Ey-k5h"/>
                                                 <constraint firstAttribute="height" constant="22" id="smV-FR-CFp"/>
@@ -211,7 +211,7 @@
                                                 <action selector="pauseButtonClicked:" target="TQu-Ny-Kt8" id="FT3-Lz-HH1"/>
                                             </connections>
                                         </button>
-                                        <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ebi-ZC-XFz">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Ebi-ZC-XFz">
                                             <rect key="frame" x="16" y="14" width="22" height="22"/>
                                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Like" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Yrs-XZ-sfe">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -222,7 +222,7 @@
                                             </connections>
                                         </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="rbc-8P-R1N">
-                                            <rect key="frame" x="170" y="14" width="22" height="22"/>
+                                            <rect key="frame" x="214" y="14" width="22" height="22"/>
                                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Restart" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="9IN-C7-Wtz">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -233,12 +233,12 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="rbc-8P-R1N" firstAttribute="centerX" secondItem="haP-OU-lZv" secondAttribute="centerX" constant="55" id="4Tw-5e-omO"/>
+                                        <constraint firstAttribute="trailing" secondItem="rbc-8P-R1N" secondAttribute="trailing" constant="16" id="2y3-4X-KjK"/>
                                         <constraint firstItem="Ebi-ZC-XFz" firstAttribute="width" secondItem="8k2-6x-WDq" secondAttribute="width" id="B7U-6Y-ATe"/>
                                         <constraint firstItem="Ebi-ZC-XFz" firstAttribute="centerY" secondItem="8k2-6x-WDq" secondAttribute="centerY" id="GHr-gq-fdG"/>
                                         <constraint firstItem="rbc-8P-R1N" firstAttribute="centerY" secondItem="8k2-6x-WDq" secondAttribute="centerY" id="NAf-Eq-Bad"/>
                                         <constraint firstItem="8k2-6x-WDq" firstAttribute="centerY" secondItem="haP-OU-lZv" secondAttribute="centerY" id="QAa-7y-tjV"/>
-                                        <constraint firstItem="8k2-6x-WDq" firstAttribute="centerX" secondItem="haP-OU-lZv" secondAttribute="centerX" constant="-55" id="eDI-Nf-THf"/>
+                                        <constraint firstItem="8k2-6x-WDq" firstAttribute="centerX" secondItem="haP-OU-lZv" secondAttribute="centerX" id="eDI-Nf-THf"/>
                                         <constraint firstItem="Ebi-ZC-XFz" firstAttribute="leading" secondItem="haP-OU-lZv" secondAttribute="leading" constant="16" id="fhG-WJ-P7p"/>
                                         <constraint firstItem="rbc-8P-R1N" firstAttribute="height" secondItem="8k2-6x-WDq" secondAttribute="height" id="lyG-vw-qtP"/>
                                         <constraint firstItem="Ebi-ZC-XFz" firstAttribute="height" secondItem="8k2-6x-WDq" secondAttribute="height" id="rUv-iN-5xd"/>

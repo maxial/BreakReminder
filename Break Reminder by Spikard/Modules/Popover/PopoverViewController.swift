@@ -67,6 +67,7 @@ final class PopoverViewController: NSViewController {
     @IBAction private func likeButtonClicked(_ sender: Any) {
         guard let writeReviewURL = URL(string: "https://itunes.apple.com/app/id1465649028?action=write-review") else { return }
         NSWorkspace.shared.open(writeReviewURL)
+        PopoverManager.shared.togglePopover(sender)
     }
     
     @IBAction private func restTimeChanged(_ sender: NSPopUpButton) {
