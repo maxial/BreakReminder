@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="TOz-WM-1ew">
             <objects>
-                <windowController storyboardIdentifier="FirstWindowController" id="ECu-vN-HQm" customClass="FirstWindowController" customModule="Spikard___Break_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="FirstWindowController" id="ECu-vN-HQm" customClass="FirstWindowController" customModule="Break_Reminder_by_Spikard" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Break Reminder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="sCU-N8-B8X">
                         <windowStyleMask key="styleMask" titled="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -30,16 +30,19 @@
         <!--First View Controller-->
         <scene sceneID="m41-9X-Oyi">
             <objects>
-                <viewController storyboardIdentifier="FirstViewController" id="a9p-pE-sLb" customClass="FirstViewController" customModule="Spikard___Break_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstViewController" id="a9p-pE-sLb" customClass="FirstViewController" customModule="Break_Reminder_by_Spikard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="7Uo-Ut-CKg">
                         <rect key="frame" x="0.0" y="0.0" width="481" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-hd-Xmp">
-                                <rect key="frame" x="59" y="94" width="363" height="42"/>
+                                <rect key="frame" x="56" y="71" width="369" height="105"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="ucf-U9-Y5V">
-                                    <font key="font" metaFont="systemThin" size="17"/>
-                                    <string key="title">You can see the app status item as an eye
+                                    <font key="font" metaFont="system" size="17"/>
+                                    <string key="title">Thank you for downloading our app!
+We hope you find it useful.
+
+You can see the app status item as an eye
 in the menu bar. Click on it to view the settings.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -66,7 +69,7 @@ DQ
                             <constraint firstAttribute="bottom" secondItem="d24-Us-cki" secondAttribute="bottom" constant="20" id="HfX-rU-qHb"/>
                             <constraint firstItem="pwN-hd-Xmp" firstAttribute="centerX" secondItem="7Uo-Ut-CKg" secondAttribute="centerX" id="TPa-Au-Rec"/>
                             <constraint firstItem="d24-Us-cki" firstAttribute="centerX" secondItem="7Uo-Ut-CKg" secondAttribute="centerX" id="Vma-5y-YYZ"/>
-                            <constraint firstItem="pwN-hd-Xmp" firstAttribute="centerY" secondItem="7Uo-Ut-CKg" secondAttribute="centerY" constant="-15" id="Z9C-qv-qGR"/>
+                            <constraint firstItem="pwN-hd-Xmp" firstAttribute="centerY" secondItem="7Uo-Ut-CKg" secondAttribute="centerY" constant="-23" id="Z9C-qv-qGR"/>
                         </constraints>
                     </view>
                 </viewController>
