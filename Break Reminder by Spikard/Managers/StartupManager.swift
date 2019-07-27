@@ -33,6 +33,7 @@ final class StartupManager {
         if (!UserDefaults.standard.bool(forKey: kFirstLaunchKey)) {
             guard let firstWindowController = FirstWindowController.instantiate(fromStoryboardNamed: .firstWindow) as? FirstWindowController else { return }
             firstWindowController.showWindow(animated: false)
+            NSApp.activate(ignoringOtherApps: true)
             UserDefaults.standard.set(true, forKey: kFirstLaunchKey)
         }
     }

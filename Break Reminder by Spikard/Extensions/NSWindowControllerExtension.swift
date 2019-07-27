@@ -32,7 +32,6 @@ extension NSWindowController {
         } else {
             window?.alphaValue = 1.0
         }
-        
     }
     
     func closeWindow(animated: Bool = true) {
