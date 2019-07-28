@@ -8,13 +8,6 @@
 
 import Cocoa
 
-let kTimeLeftInSecondsKey = "TimeLeftInSecondsKey"
-
-enum Status: String {
-    
-    case workingTime, restTime
-}
-
 // MARK: - TimerManager
 
 final class TimerManager {
@@ -26,6 +19,7 @@ final class TimerManager {
     private(set) var status: Status = .workingTime
     private(set) var timerIsPaused: Bool = false
     private(set) var timeLeftInSeconds = SettingsManager.timeInSeconds(for: .workingTime) { didSet { tickDidHappen() } }
+    private(set) var totalTimeLeftInSeconds = SettingsManager.timeInSeconds(for: .totalWorkingTime)
     
     // MARK: - Private properties
     
@@ -56,6 +50,10 @@ final class TimerManager {
         timeLeftInSeconds = 0
     }
     
+    func restartTotalTimer() {
+        totalTimeLeftInSeconds = SettingsManager.timeInSeconds(for: .totalWorkingTime)
+    }
+    
     // MARK: - Private methods
     
     private init() {
@@ -70,6 +68,7 @@ final class TimerManager {
     }
     
     @objc private func tick() {
+        totalTimeLeftInSeconds -= 1
         if Int(systemIdleTime() ?? 0) >= SettingsManager.timeInSeconds(for: .restTime) {
             timeLeftInSeconds = SettingsManager.timeInSeconds(for: .workingTime)
         } else {
@@ -78,12 +77,14 @@ final class TimerManager {
     }
     
     private func tickDidHappen() {
+        NotificationCenter.default.post(name: .tick, object: nil)
         if timeLeftInSeconds <= 0 {
             status = status == .restTime ? .workingTime : .restTime
             NotificationCenter.default.post(name: .timeIsUp, object: nil)
             startTimer()
-        } else {
-            NotificationCenter.default.post(name: .tick, object: nil, userInfo: [kTimeLeftInSecondsKey: timeLeftInSeconds])
+        }
+        if totalTimeLeftInSeconds <= 0 {
+            NotificationCenter.default.post(name: .totalTimeIsUp, object: nil)
         }
     }
     

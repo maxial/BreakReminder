@@ -10,6 +10,7 @@ import Cocoa
 import ServiceManagement
 
 private let kStatusItemIconName = "StatusItemIcon"
+private let kStatusItemIconRedName = "StatusItemIconRed"
 private let kLauncherApplicationIdentifier = "com.spikard.break-reminder-launcher"
 
 @NSApplicationMain
@@ -32,6 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         TimerManager.shared.startTimer()
         restTimeWindowController = RestTimeWindowController.instantiate(fromStoryboardNamed: .restTime) as? RestTimeWindowController
         NotificationCenter.default.addObserver(self, selector: #selector(timeIsUp(notification:)), name: .timeIsUp, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(totalTimeIsUp(notification:)), name: .totalTimeIsUp, object: nil)
         StartupManager.setup()
         StartupManager.showFirstWindowIfNeeded()
     }
@@ -69,5 +71,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .workingTime:  restTimeWindowController.closeWindow()
         case .restTime:     restTimeWindowController.showWindow()
         }
+    }
+    
+    @objc private func totalTimeIsUp(notification: NSNotification) {
+        statusItem.button?.image = NSImage(named: NSImage.Name(kStatusItemIconRedName))
     }
 }

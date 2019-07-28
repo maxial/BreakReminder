@@ -21,9 +21,12 @@ final class RestTimeViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         pastTimeLabel.font = NSFont.restViewTimerMonospacedDigitSystemFont
         leftTimeLabel.font = NSFont.restViewTimerMonospacedDigitSystemFont
-        updateRestTime(with: SettingsManager.timeInSeconds(for: .restTime))
+        
+        updateRestTime()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(tick(notification:)), name: .tick, object: nil)
     }
     
@@ -37,15 +40,12 @@ final class RestTimeViewController: NSViewController {
         TimerManager.shared.skipRestTime()
     }
     
-    // MARK: - Notifications
-    
     @objc private func tick(notification: NSNotification) {
-        guard let timeLeftInSeconds = notification.userInfo?[kTimeLeftInSecondsKey] as? Int else { return }
-        updateRestTime(with: timeLeftInSeconds)
+        updateRestTime()
     }
     
-    private func updateRestTime(with timeLeftInSeconds: Int) {
-        let percentage = 1 - Double(timeLeftInSeconds) / Double(SettingsManager.timeInSeconds(for: .restTime))
+    private func updateRestTime() {
+        let percentage = 1 - Double(TimerManager.shared.timeLeftInSeconds) / Double(SettingsManager.timeInSeconds(for: .restTime))
         progressIndicator.doubleValue = percentage
         pastTimeLabel.stringValue = TimeConverter.string(from: SettingsManager.timeInSeconds(for: .restTime) - TimerManager.shared.timeLeftInSeconds)
         leftTimeLabel.stringValue = "-" + TimeConverter.string(from: TimerManager.shared.timeLeftInSeconds)

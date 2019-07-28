@@ -15,11 +15,14 @@ final class PopoverViewController: NSViewController {
     // MARK: - Private properties
     
     @IBOutlet private weak var timerTextField: NSTextField!
+    @IBOutlet private weak var totalTimerTextField: NSTextField!
     @IBOutlet private weak var settingsButton: NSButton!
     
     @IBOutlet private weak var restTimePopupButton: NSPopUpButton!
     @IBOutlet private weak var workingTimePopupButton: NSPopUpButton!
+    @IBOutlet private weak var totalWorkingTimePopupButton: NSPopUpButton!
     @IBOutlet private weak var launchAtSystemStartupCheckButton: NSButton!
+    @IBOutlet private weak var advancedSettingsButton: NSButton!
     
     private var settingsIsVisible: Bool = false
     
@@ -29,10 +32,14 @@ final class PopoverViewController: NSViewController {
         super.viewDidLoad()
         
         timerTextField.font = NSFont.popoverTimerMonospacedDigitSystemFont
-        updateTimerTextField(with: TimerManager.shared.timeLeftInSeconds)
+        totalTimerTextField.font = NSFont.popoverTotalTimerMonospacedDigitSystemFont
+        
+        updateTimerTextField()
+        updateTotalTimerTextField()
         setupSettingsSection()
         
         NotificationCenter.default.addObserver(self, selector: #selector(tick(notification:)), name: .tick, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(totalTimeIsUp(notification:)), name: .totalTimeIsUp, object: nil)
     }
     
     deinit {
@@ -54,6 +61,10 @@ final class PopoverViewController: NSViewController {
         updateSettingsSectionVisibility()
     }
     
+    @IBAction private func advancedSettingsButtonTapped(_ sender: Any) {
+        
+    }
+    
     @IBAction private func restartButtonClicked(_ sender: Any) {
         TimerManager.shared.startTimer()
     }
@@ -72,28 +83,48 @@ final class PopoverViewController: NSViewController {
     
     @IBAction private func restTimeChanged(_ sender: NSPopUpButton) {
         SettingsManager.update(.restTime, withTimeInSeconds: sender.selectedItem?.tag ?? 0)
+        if TimerManager.shared.status == .restTime {
+            TimerManager.shared.startTimer()
+        }
     }
     
     @IBAction private func workingTimeChanged(_ sender: NSPopUpButton) {
         SettingsManager.update(.workingTime, withTimeInSeconds: sender.selectedItem?.tag ?? 0)
+        if TimerManager.shared.status == .workingTime {
+            TimerManager.shared.startTimer()
+        }
     }
     
-    @IBAction func launchAtSystemStartupChanged(_ sender: NSButton) {
+    @IBAction private func totalWorkingTimeChanged(_ sender: NSPopUpButton) {
+        SettingsManager.update(.totalWorkingTime, withTimeInSeconds: sender.selectedItem?.tag ?? 0)
+        TimerManager.shared.restartTotalTimer()
+        updateTotalTimerTextField()
+    }
+    
+    @IBAction private func launchAtSystemStartupChanged(_ sender: NSButton) {
         StartupManager.startAppOnSystemStartup = sender.state == .on
     }
     
-    private func updateTimerTextField(with timeLeftInSeconds: Int) {
+    private func updateTimerTextField() {
         timerTextField.stringValue = TimeConverter.string(from: TimerManager.shared.timeLeftInSeconds)
+    }
+    
+    private func updateTotalTimerTextField() {
+        totalTimerTextField.stringValue = TimeConverter.string(from: TimerManager.shared.totalTimeLeftInSeconds)
     }
     
     private func setupSettingsSection() {
         let restTimeInSeconds = SettingsManager.timeInSeconds(for: .restTime)
         let workingTimeInSeconds = SettingsManager.timeInSeconds(for: .workingTime)
+        let totalWorkingTimeInSeconds = SettingsManager.timeInSeconds(for: .totalWorkingTime)
         if let restTimeIndex = restTimePopupButton.itemArray.firstIndex(where: { $0.tag == restTimeInSeconds }) {
             restTimePopupButton.selectItem(at: restTimeIndex)
         }
         if let workingTimeIndex = workingTimePopupButton.itemArray.firstIndex(where: { $0.tag == workingTimeInSeconds }) {
             workingTimePopupButton.selectItem(at: workingTimeIndex)
+        }
+        if let totalWorkingTimeIndex = totalWorkingTimePopupButton.itemArray.firstIndex(where: { $0.tag == totalWorkingTimeInSeconds }) {
+            totalWorkingTimePopupButton.selectItem(at: totalWorkingTimeIndex)
         }
         launchAtSystemStartupCheckButton.state = StartupManager.startAppOnSystemStartup ? .on : .off
         updateSettingsSectionVisibility()
@@ -103,13 +134,17 @@ final class PopoverViewController: NSViewController {
         settingsButton.title = settingsIsVisible ? NSLocalizedString("Hide settings", comment: "") : NSLocalizedString("Show settings", comment: "")
         restTimePopupButton.superview?.isHidden = !settingsIsVisible
         workingTimePopupButton.superview?.isHidden = !settingsIsVisible
+        totalWorkingTimePopupButton.superview?.isHidden = !settingsIsVisible
         launchAtSystemStartupCheckButton.superview?.isHidden = !settingsIsVisible
+        advancedSettingsButton.isHidden = true
     }
     
-    // MARK: - Notifications
-    
     @objc private func tick(notification: NSNotification) {
-        guard let timeLeftInSeconds = notification.userInfo?[kTimeLeftInSecondsKey] as? Int else { return }
-        updateTimerTextField(with: timeLeftInSeconds)
+        updateTimerTextField()
+        updateTotalTimerTextField()
+    }
+    
+    @objc private func totalTimeIsUp(notification: NSNotification) {
+        totalTimerTextField.textColor = .systemRed
     }
 }

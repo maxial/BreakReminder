@@ -14,6 +14,10 @@ extension NSFont {
         return NSFont.monospacedDigitSystemFont(ofSize: 50, weight: .ultraLight)
     }
     
+    static var popoverTotalTimerMonospacedDigitSystemFont: NSFont {
+        return NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .ultraLight)
+    }
+    
     static var restViewTimerMonospacedDigitSystemFont: NSFont {
         return NSFont.monospacedDigitSystemFont(ofSize: 14, weight: .thin)
     }

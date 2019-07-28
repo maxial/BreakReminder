@@ -23,6 +23,8 @@
 		4283F0392299D5CA0051FAD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4283F0382299D5CA0051FAD6 /* Assets.xcassets */; };
 		4283F03C2299D5CA0051FAD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4283F03A2299D5CA0051FAD6 /* Main.storyboard */; };
 		4283F0452299D6510051FAD6 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283F0442299D6510051FAD6 /* NSViewControllerExtension.swift */; };
+		428F922E22EC778B00583062 /* AdvancedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F922C22EC778B00583062 /* AdvancedSettingsViewController.swift */; };
+		428F923122EC77B400583062 /* AdvancedSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428F923022EC77B400583062 /* AdvancedSettings.storyboard */; };
 		4290C8F3229A5BD400BC8ECC /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4290C8F2229A5BD400BC8ECC /* EventMonitor.swift */; };
 		4290C8F5229A6A6400BC8ECC /* PopoverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4290C8F4229A6A6400BC8ECC /* PopoverManager.swift */; };
 		4290C8FB229A81D900BC8ECC /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4290C8FA229A81D900BC8ECC /* SettingsManager.swift */; };
@@ -74,6 +76,8 @@
 		4283F03D2299D5CA0051FAD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4283F03E2299D5CA0051FAD6 /* SpikardBreakReminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpikardBreakReminder.entitlements; sourceTree = "<group>"; };
 		4283F0442299D6510051FAD6 /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
+		428F922C22EC778B00583062 /* AdvancedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsViewController.swift; sourceTree = "<group>"; };
+		428F923022EC77B400583062 /* AdvancedSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdvancedSettings.storyboard; sourceTree = "<group>"; };
 		4290C8F2229A5BD400BC8ECC /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		4290C8F4229A6A6400BC8ECC /* PopoverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverManager.swift; sourceTree = "<group>"; };
 		4290C8FA229A81D900BC8ECC /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
@@ -112,8 +116,8 @@
 		421B0E1C229B0EAC00C069CE /* Popover */ = {
 			isa = PBXGroup;
 			children = (
-				42D725D3229D9043008AC93E /* Popover.storyboard */,
 				4283F0362299D5C90051FAD6 /* PopoverViewController.swift */,
+				42D725D3229D9043008AC93E /* Popover.storyboard */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
@@ -121,9 +125,9 @@
 		421B0E1D229B0EB800C069CE /* RestTime */ = {
 			isa = PBXGroup;
 			children = (
-				4290C902229AC4F200BC8ECC /* RestTime.storyboard */,
 				426E61A0229AEAD000E876F9 /* RestTimeWindowController.swift */,
 				4290C920229AC6AF00BC8ECC /* RestTimeViewController.swift */,
+				4290C902229AC4F200BC8ECC /* RestTime.storyboard */,
 			);
 			path = RestTime;
 			sourceTree = "<group>";
@@ -199,6 +203,15 @@
 			path = "Break Reminder by Spikard";
 			sourceTree = "<group>";
 		};
+		428F922B22EC776F00583062 /* AdvancedSettings */ = {
+			isa = PBXGroup;
+			children = (
+				428F922C22EC778B00583062 /* AdvancedSettingsViewController.swift */,
+				428F923022EC77B400583062 /* AdvancedSettings.storyboard */,
+			);
+			path = AdvancedSettings;
+			sourceTree = "<group>";
+		};
 		4290C8F6229A7FCF00BC8ECC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +253,7 @@
 				42FD9BC3229E4FFF0026D379 /* FirstWindow */,
 				421B0E1C229B0EAC00C069CE /* Popover */,
 				421B0E1D229B0EB800C069CE /* RestTime */,
+				428F922B22EC776F00583062 /* AdvancedSettings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -247,9 +261,9 @@
 		42FD9BC3229E4FFF0026D379 /* FirstWindow */ = {
 			isa = PBXGroup;
 			children = (
-				42FD9BC4229E503A0026D379 /* FirstWindow.storyboard */,
 				42FD9BC6229E50620026D379 /* FirstWindowController.swift */,
 				42FD9BC8229E556D0026D379 /* FirstViewController.swift */,
+				42FD9BC4229E503A0026D379 /* FirstWindow.storyboard */,
 			);
 			path = FirstWindow;
 			sourceTree = "<group>";
@@ -346,6 +360,7 @@
 				42FD9BC5229E503A0026D379 /* FirstWindow.storyboard in Resources */,
 				4283F0392299D5CA0051FAD6 /* Assets.xcassets in Resources */,
 				4283F03C2299D5CA0051FAD6 /* Main.storyboard in Resources */,
+				428F923122EC77B400583062 /* AdvancedSettings.storyboard in Resources */,
 				4290C903229AC4F200BC8ECC /* RestTime.storyboard in Resources */,
 				42D725D4229D9043008AC93E /* Popover.storyboard in Resources */,
 			);
@@ -373,6 +388,7 @@
 				424C49DF229BE35700CBFF18 /* TimeConverter.swift in Sources */,
 				4290C8FF229A8D1B00BC8ECC /* NSNotificationNameExtension.swift in Sources */,
 				4283F0372299D5C90051FAD6 /* PopoverViewController.swift in Sources */,
+				428F922E22EC778B00583062 /* AdvancedSettingsViewController.swift in Sources */,
 				4290C8FB229A81D900BC8ECC /* SettingsManager.swift in Sources */,
 				4283F0452299D6510051FAD6 /* NSViewControllerExtension.swift in Sources */,
 				424C49E2229C23EC00CBFF18 /* NSFontExtension.swift in Sources */,

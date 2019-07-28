@@ -10,11 +10,13 @@ import Cocoa
 
 private let kTickNotification = "TickNotification"
 private let kTimeIsUpNotification = "TimeIsUpNotification"
+private let kTotalTimeIsUpNotification = "TotalTimeIsUpNotification"
 private let kKillLauncherNotification = "KillLauncherNotification"
 
 extension NSNotification.Name {
     
     static let tick = NSNotification.Name(kTickNotification)
     static let timeIsUp = NSNotification.Name(kTimeIsUpNotification)
+    static let totalTimeIsUp = NSNotification.Name(kTotalTimeIsUpNotification)
     static let killLauncher = Notification.Name(kKillLauncherNotification)
 }
