@@ -40,6 +40,7 @@ final class PopoverViewController: NSViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(tick(notification:)), name: .tick, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(totalTimeIsUp(notification:)), name: .totalTimeIsUp, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(totalTimerDidRestart(notification:)), name: .totalTimerDidRestart, object: nil)
     }
     
     deinit {
@@ -146,5 +147,9 @@ final class PopoverViewController: NSViewController {
     
     @objc private func totalTimeIsUp(notification: NSNotification) {
         totalTimerTextField.textColor = .systemRed
+    }
+    
+    @objc private func totalTimerDidRestart(notification: NSNotification) {
+        totalTimerTextField.textColor = .secondaryLabelColor
     }
 }

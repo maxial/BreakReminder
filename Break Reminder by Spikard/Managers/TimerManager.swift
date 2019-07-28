@@ -52,6 +52,7 @@ final class TimerManager {
     
     func restartTotalTimer() {
         totalTimeLeftInSeconds = SettingsManager.timeInSeconds(for: .totalWorkingTime)
+        NotificationCenter.default.post(name: .totalTimerDidRestart, object: nil)
     }
     
     // MARK: - Private methods

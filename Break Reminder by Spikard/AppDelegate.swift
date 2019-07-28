@@ -34,6 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         restTimeWindowController = RestTimeWindowController.instantiate(fromStoryboardNamed: .restTime) as? RestTimeWindowController
         NotificationCenter.default.addObserver(self, selector: #selector(timeIsUp(notification:)), name: .timeIsUp, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(totalTimeIsUp(notification:)), name: .totalTimeIsUp, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(totalTimerDidRestart(notification:)), name: .totalTimerDidRestart, object: nil)
         StartupManager.setup()
         StartupManager.showFirstWindowIfNeeded()
     }
@@ -75,5 +76,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc private func totalTimeIsUp(notification: NSNotification) {
         statusItem.button?.image = NSImage(named: NSImage.Name(kStatusItemIconRedName))
+    }
+    
+    @objc private func totalTimerDidRestart(notification: NSNotification) {
+        statusItem.button?.image = NSImage(named: NSImage.Name(kStatusItemIconName))
     }
 }
