@@ -8,6 +8,13 @@
 
 import Cocoa
 
+private let kDefaultIdle = 30
+
+enum Status {
+    
+    case work, shortBreak, longBreak
+}
+
 // MARK: - TimerManager
 
 final class TimerManager {
@@ -16,10 +23,20 @@ final class TimerManager {
     
     static let shared = TimerManager()
     
-    private(set) var status: Status = .workingTime
-    private(set) var timerIsPaused: Bool = false
-    private(set) var timeLeftInSeconds = SettingsManager.timeInSeconds(for: .workingTime) { didSet { tickDidHappen() } }
-    private(set) var totalTimeLeftInSeconds = SettingsManager.timeInSeconds(for: .totalWorkingTime)
+    var isPaused: Bool = false
+    
+    private(set) var status: Status = .work       { didSet { restartTimer() } }
+    private(set) var timeLeftInSeconds = 0        { didSet { timerDidUpdate() } }
+    private(set) var sessionTimeLeftInSeconds = 0 { didSet { sessionTimerDidUpdate() } }
+    private(set) var currentShortBreak: Int = 0   { didSet { PopoverManager.shared.popoverViewController?.updateShortBreaksStackView() } }
+    
+    var timeIntervalInSeconds: Int {
+        switch status {
+        case .work       : return SettingsManager.getWorkIntervalDuration()
+        case .shortBreak : return SettingsManager.get(.shortBreakDuration) as! Int
+        case .longBreak  : return SettingsManager.get(.longBreakDuration) as! Int
+        }
+    }
     
     // MARK: - Private properties
     
@@ -28,65 +45,90 @@ final class TimerManager {
     // MARK: - Public methods
     
     deinit {
-        guard let timer = timer else { return }
-        timer.invalidate()
-        self.timer = nil
+        removeTimer()
     }
     
-    func startTimer() {
-        timeLeftInSeconds = SettingsManager.timeInSeconds(for: status)
+    func restartTimer() {
+        timeLeftInSeconds = timeIntervalInSeconds
     }
     
-    func toggleTimer() {
-        if timerIsPaused {
-            timer = newTimer()
-        } else {
-            timer?.invalidate()
-        }
-        timerIsPaused = !timerIsPaused
+    func restartSessionTimer() {
+        sessionTimeLeftInSeconds = SettingsManager.get(.sessionDuration) as! Int
     }
     
-    func skipRestTime() {
+    func skipBreak() {
         timeLeftInSeconds = 0
     }
     
-    func restartTotalTimer() {
-        totalTimeLeftInSeconds = SettingsManager.timeInSeconds(for: .totalWorkingTime)
-        NotificationCenter.default.post(name: .totalTimerDidRestart, object: nil)
+    func resetShortBreaks() {
+        currentShortBreak = 0
     }
     
     // MARK: - Private methods
     
     private init() {
-        timer = newTimer()
+        timer = createTimer()
     }
     
-    private func newTimer() -> Timer {
+    private func createTimer() -> Timer {
         let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
         timer.tolerance = 0.15
         RunLoop.current.add(timer, forMode: .common)
         return timer
     }
     
-    @objc private func tick() {
-        totalTimeLeftInSeconds -= 1
-        if Int(systemIdleTime() ?? 0) >= SettingsManager.timeInSeconds(for: .restTime) {
-            timeLeftInSeconds = SettingsManager.timeInSeconds(for: .workingTime)
-        } else {
-            timeLeftInSeconds -= 1
-        }
+    private func removeTimer() {
+        timer?.invalidate()
+        timer = nil
     }
     
-    private func tickDidHappen() {
-        NotificationCenter.default.post(name: .tick, object: nil)
-        if timeLeftInSeconds <= 0 {
-            status = status == .restTime ? .workingTime : .restTime
-            NotificationCenter.default.post(name: .timeIsUp, object: nil)
-            startTimer()
+    @objc private func tick() {
+        if sessionTimeLeftInSeconds > 0 { sessionTimeLeftInSeconds -= 1 }
+        if !isPaused, timeLeftInSeconds > 0 { timeLeftInSeconds -= 1 }
+    }
+    
+    private func timerDidUpdate() {
+        restartTimerIfUserWasInactive()
+        updateStatusIfTimeIsUp()
+        PopoverManager.shared.popoverViewController?.timerDidUpdate()
+        (NSApplication.shared.delegate as? AppDelegate)?.timerDidUpdate()
+    }
+    
+    private func sessionTimerDidUpdate() {
+        PopoverManager.shared.popoverViewController?.sessionTimerDidUpdate()
+        (NSApplication.shared.delegate as? AppDelegate)?.sessionTimerDidUpdate()
+    }
+    
+    private func restartTimerIfUserWasInactive() {
+//        let idleTime = Int(systemIdleTime() ?? 0) - kDefaultIdle
+//        let isEnabledShortBreaks = SettingsManager.get(.isEnabledShortBreaks) as! Bool
+//        let breakDuration = SettingsManager.get(isEnabledShortBreaks ? .shortBreakDuration : .longBreakDuration) as! Int
+//        if idleTime > breakDuration {
+//            restartTimer()
+//        }
+    }
+    
+    private func updateStatusIfTimeIsUp() {
+        guard timeLeftInSeconds == 0 else { return }
+        
+        switch status {
+        case .work:
+            let isEnabledShortBreaks = SettingsManager.get(.isEnabledShortBreaks) as! Bool
+            if isEnabledShortBreaks {
+                currentShortBreak += 1
+                if currentShortBreak > SettingsManager.get(.numberOfShortBreaks) as! Int {
+                    resetShortBreaks()
+                    status = .longBreak
+                } else {
+                    status = .shortBreak
+                }
+            } else {
+                status = .longBreak
+            }
+        case .shortBreak, .longBreak: status = .work
         }
-        if totalTimeLeftInSeconds <= 0 {
-            NotificationCenter.default.post(name: .totalTimeIsUp, object: nil)
-        }
+        
+        (NSApplication.shared.delegate as? AppDelegate)?.timeIsUp()
     }
     
     private func systemIdleTime() -> Double? {

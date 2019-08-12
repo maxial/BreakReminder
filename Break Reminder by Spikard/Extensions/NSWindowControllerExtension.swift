@@ -8,7 +8,7 @@
 
 import Cocoa
 
-private let kShowAnimationDuration = 7.0
+private let kShowAnimationDuration = 5.0
 private let kCloseAnimationDuration = 0.0
 
 extension NSWindowController {
@@ -19,7 +19,7 @@ extension NSWindowController {
         return storyboard.instantiateController(withIdentifier: identifier) as! NSWindowController
     }
     
-    func showWindow(animated: Bool = true, completion: (() -> Void)? = nil) {
+    @objc func showWindow(animated: Bool = true, completion: (() -> Void)? = nil) {
         window?.makeKeyAndOrderFront(nil)
         if animated {
             window?.alphaValue = 0.0

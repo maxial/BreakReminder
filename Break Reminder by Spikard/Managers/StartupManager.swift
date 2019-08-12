@@ -17,19 +17,19 @@ private let kFirstLaunchKey = "FirstLaunchKey"
 
 final class StartupManager {
     
-    class var startAppOnSystemStartup: Bool {
+    static var startAppOnSystemStartup: Bool {
         get { return UserDefaults.standard.bool(forKey: kStartOnSystemStartupKey) }
         set { update(startAppOnSystemStartup: newValue) }
     }
     
-    class func setup() {
+    static func setup() {
         SMLoginItemSetEnabled(kLauncherApplicationIdentifier as CFString, startAppOnSystemStartup)
         if !NSWorkspace.shared.runningApplications.filter({ $0.bundleIdentifier == kLauncherApplicationIdentifier }).isEmpty {
             DistributedNotificationCenter.default.post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
         }
     }
     
-    class func showFirstWindowIfNeeded() {
+    static func showFirstWindowIfNeeded() {
         if (!UserDefaults.standard.bool(forKey: kFirstLaunchKey)) {
             guard let firstWindowController = FirstWindowController.instantiate(fromStoryboardNamed: .firstWindow) as? FirstWindowController else { return }
             firstWindowController.showWindow(animated: false)
@@ -40,7 +40,7 @@ final class StartupManager {
     
     // MARK: - Private methods
     
-    private class func update(startAppOnSystemStartup: Bool) {
+    private static func update(startAppOnSystemStartup: Bool) {
         UserDefaults.standard.set(startAppOnSystemStartup, forKey: kStartOnSystemStartupKey)
         SMLoginItemSetEnabled(kLauncherApplicationIdentifier as CFString, startAppOnSystemStartup)
     }

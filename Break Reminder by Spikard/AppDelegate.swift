@@ -22,37 +22,72 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
-    // MARK: - Public properties
-    
-    var restTimeWindowController: RestTimeWindowController?
+    private var shortBreakWindowController: ShortBreakWindowController?
+    private var longBreakWindowController: LongBreakWindowController?
+    private var settingsWindowController: SettingsWindowController?
     
     // MARK: - Public methods
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         setupStatusItem()
-        TimerManager.shared.startTimer()
-        restTimeWindowController = RestTimeWindowController.instantiate(fromStoryboardNamed: .restTime) as? RestTimeWindowController
-        NotificationCenter.default.addObserver(self, selector: #selector(timeIsUp(notification:)), name: .timeIsUp, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(totalTimeIsUp(notification:)), name: .totalTimeIsUp, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(totalTimerDidRestart(notification:)), name: .totalTimerDidRestart, object: nil)
+        setupBreakWindows()
+        
+        TimerManager.shared.restartTimer()
+        TimerManager.shared.restartSessionTimer()
+        
         StartupManager.setup()
         StartupManager.showFirstWindowIfNeeded()
     }
     
-    func applicationWillTerminate(_ aNotification: Notification) {
-        NotificationCenter.default.removeObserver(self)
+    func timerDidUpdate() {
+        (shortBreakWindowController?.contentViewController as? ShortBreakViewController)?.timerDidUpdate()
+        (longBreakWindowController?.contentViewController as? LongBreakViewController)?.timerDidUpdate()
+    }
+    
+    func sessionTimerDidUpdate() {
+        statusItem.button?.image = NSImage(named: NSImage.Name(TimerManager.shared.sessionTimeLeftInSeconds == 0 ? kStatusItemIconRedName : kStatusItemIconName))
+    }
+    
+    func timeIsUp() {
+        switch TimerManager.shared.status {
+        case .work:
+            shortBreakWindowController?.closeWindow()
+            longBreakWindowController?.closeWindow()
+        case .shortBreak:
+            shortBreakWindowController?.showWindow()
+        case .longBreak:
+            longBreakWindowController?.showWindow()
+        }
+    }
+    
+    func showSettings(_ sender: Any) {
+        if settingsWindowController == nil {
+            settingsWindowController = SettingsWindowController.instantiate(fromStoryboardNamed: .settings) as? SettingsWindowController
+            settingsWindowController?.showWindow(animated: false)
+        } else {
+            settingsWindowController?.window?.makeKeyAndOrderFront(nil)
+        }
+        PopoverManager.shared.togglePopover(sender)
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     // MARK: - Private methods
-    
-    @IBAction private func terminate(_ sender: Any) {
-        NSApp.terminate(self)
-    }
     
     private func setupStatusItem() {
         statusItem.button?.image = NSImage(named: NSImage.Name(kStatusItemIconName))
         statusItem.button?.action = #selector(togglePopover(_:))
         statusItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
+    }
+    
+    private func setupBreakWindows() {
+        shortBreakWindowController = ShortBreakWindowController.instantiate(fromStoryboardNamed: .shortBreak) as? ShortBreakWindowController
+        longBreakWindowController = LongBreakWindowController.instantiate(fromStoryboardNamed: .longBreak) as? LongBreakWindowController
+//        shortBreakWindowController?.window?.backgroundColor = NSColor.windowBackgroundColor.withAlphaComponent(0.85)
+//        longBreakWindowController?.window?.backgroundColor = NSColor.windowBackgroundColor.withAlphaComponent(0.93)
+    }
+    
+    @IBAction private func terminate(_ sender: Any) {
+        NSApp.terminate(self)
     }
     
     @objc private func togglePopover(_ sender: NSStatusBarButton) {
@@ -64,21 +99,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusItem.popUpMenu(contextMenu)
             statusItem.menu = nil
         }
-    }
-    
-    @objc private func timeIsUp(notification: NSNotification) {
-        guard let restTimeWindowController = restTimeWindowController else { return }
-        switch TimerManager.shared.status {
-        case .workingTime:  restTimeWindowController.closeWindow()
-        case .restTime:     restTimeWindowController.showWindow()
-        }
-    }
-    
-    @objc private func totalTimeIsUp(notification: NSNotification) {
-        statusItem.button?.image = NSImage(named: NSImage.Name(kStatusItemIconRedName))
-    }
-    
-    @objc private func totalTimerDidRestart(notification: NSNotification) {
-        statusItem.button?.image = NSImage(named: NSImage.Name(kStatusItemIconName))
     }
 }

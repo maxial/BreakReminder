@@ -19,6 +19,10 @@ final class PopoverManager {
     private let popover: NSPopover
     private let eventMonitor: EventMonitor
     
+    // MARK: - Public properties
+    
+    var popoverViewController: PopoverViewController? { return popover.contentViewController as? PopoverViewController }
+    
     // MARK: - Public methods
     
     @objc func togglePopover(_ sender: Any?) {
@@ -41,6 +45,8 @@ final class PopoverManager {
     private func showPopover(sender: Any?) {
         guard let view = sender as? NSView else { return }
         popover.show(relativeTo: view.bounds, of: view, preferredEdge: NSRectEdge.minY)
+        (popover.contentViewController as? PopoverViewController)?.timerDidUpdate()
+        (popover.contentViewController as? PopoverViewController)?.sessionTimerDidUpdate()
         eventMonitor.start()
     }
     

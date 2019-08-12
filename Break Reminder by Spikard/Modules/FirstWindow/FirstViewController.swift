@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class FirstViewController: NSViewController {
+final class FirstViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

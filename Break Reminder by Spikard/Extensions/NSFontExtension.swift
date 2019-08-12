@@ -10,15 +10,15 @@ import Cocoa
 
 extension NSFont {
     
-    static var popoverTimerMonospacedDigitSystemFont: NSFont {
-        return NSFont.monospacedDigitSystemFont(ofSize: 50, weight: .ultraLight)
+    static var timerMonospacedDigitSystemFont: NSFont {
+        return NSFont.monospacedDigitSystemFont(ofSize: 35, weight: .thin)
     }
     
-    static var popoverTotalTimerMonospacedDigitSystemFont: NSFont {
+    static var sessionTimerMonospacedDigitSystemFont: NSFont {
         return NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .ultraLight)
     }
     
-    static var restViewTimerMonospacedDigitSystemFont: NSFont {
+    static var breakTimerMonospacedDigitSystemFont: NSFont {
         return NSFont.monospacedDigitSystemFont(ofSize: 14, weight: .thin)
     }
 }

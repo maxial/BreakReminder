@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class FirstWindowController: NSWindowController {
+final class FirstWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()

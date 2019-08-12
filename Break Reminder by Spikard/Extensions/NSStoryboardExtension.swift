@@ -10,11 +10,15 @@ import Cocoa
 
 private let kFirstWindowStoryboard = "FirstWindow"
 private let kPopoverStoryboard = "Popover"
-private let kResTimeStoryboard = "RestTime"
+private let kShortBreakStoryboard = "ShortBreak"
+private let kLongBreakStoryboard = "LongBreak"
+private let kSettingsStoryboard = "Settings"
 
 extension NSStoryboard.Name {
     
     static let firstWindow = NSStoryboard.Name(kFirstWindowStoryboard)
     static let popover = NSStoryboard.Name(kPopoverStoryboard)
-    static let restTime = NSStoryboard.Name(kResTimeStoryboard)
+    static let shortBreak = NSStoryboard.Name(kShortBreakStoryboard)
+    static let longBreak = NSStoryboard.Name(kLongBreakStoryboard)
+    static let settings = NSStoryboard.Name(kSettingsStoryboard)
 }

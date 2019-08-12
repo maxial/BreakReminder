@@ -36,14 +36,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-hd-Xmp">
-                                <rect key="frame" x="56" y="71" width="369" height="105"/>
+                                <rect key="frame" x="77" y="71" width="328" height="105"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="ucf-U9-Y5V">
                                     <font key="font" metaFont="system" size="17"/>
                                     <string key="title">Thank you for downloading our app!
 We hope you find it useful.
 
 You can see the app status item as an eye
-in the menu bar. Click on it to view the settings.</string>
+in the menu bar.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>

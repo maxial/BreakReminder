@@ -14,40 +14,44 @@ final class PopoverViewController: NSViewController {
     
     // MARK: - Private properties
     
-    @IBOutlet private weak var timerTextField: NSTextField!
-    @IBOutlet private weak var totalTimerTextField: NSTextField!
-    @IBOutlet private weak var settingsButton: NSButton!
-    
-    @IBOutlet private weak var restTimePopupButton: NSPopUpButton!
-    @IBOutlet private weak var workingTimePopupButton: NSPopUpButton!
-    @IBOutlet private weak var totalWorkingTimePopupButton: NSPopUpButton!
-    @IBOutlet private weak var launchAtSystemStartupCheckButton: NSButton!
-    @IBOutlet private weak var advancedSettingsButton: NSButton!
-    
-    private var settingsIsVisible: Bool = false
+    @IBOutlet private weak var circularTimer: CircularTimer!
+    @IBOutlet private weak var sessionTimerLabel: NSTextField!
+    @IBOutlet private weak var shortBreaksStackView: NSStackView!
     
     // MARK: - Override methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        timerTextField.font = NSFont.popoverTimerMonospacedDigitSystemFont
-        totalTimerTextField.font = NSFont.popoverTotalTimerMonospacedDigitSystemFont
-        
-        updateTimerTextField()
-        updateTotalTimerTextField()
-        setupSettingsSection()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(tick(notification:)), name: .tick, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(totalTimeIsUp(notification:)), name: .totalTimeIsUp, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(totalTimerDidRestart(notification:)), name: .totalTimerDidRestart, object: nil)
+        setup()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    func timerDidUpdate() {
+        circularTimer?.timeIntervalInSeconds = TimerManager.shared.timeIntervalInSeconds
+        circularTimer?.timeLeftInSeconds = TimerManager.shared.timeLeftInSeconds
+    }
+    
+    func sessionTimerDidUpdate() {
+        sessionTimerLabel?.stringValue = TimeConverter.string(from: TimerManager.shared.sessionTimeLeftInSeconds)
+        sessionTimerLabel?.textColor = TimerManager.shared.sessionTimeLeftInSeconds == 0 ? .systemRed : .secondaryLabelColor
+    }
+    
+    func updateShortBreaksStackView() {
+        shortBreaksStackView?.isHidden = !(SettingsManager.get(.isEnabledShortBreaks) as! Bool)
+        let numberOfShortBreaks = SettingsManager.get(.numberOfShortBreaks) as! Int
+        shortBreaksStackView?.arrangedSubviews.enumerated().forEach { i, view in
+            view.isHidden = i >= numberOfShortBreaks
+            view.backgroundColor = i < TimerManager.shared.currentShortBreak ? .labelColor : .tertiaryLabelColor
+        }
     }
     
     // MARK: - Private methods
+    
+    private func setup() {
+        sessionTimerLabel.font = .sessionTimerMonospacedDigitSystemFont
+        timerDidUpdate()
+        sessionTimerDidUpdate()
+        updateShortBreaksStackView()
+    }
     
     @IBAction private func closeButtonClicked(_ sender: Any) {
         PopoverManager.shared.togglePopover(sender)
@@ -57,23 +61,14 @@ final class PopoverViewController: NSViewController {
         NSApplication.shared.terminate(self)
     }
     
-    @IBAction private func settingsButtonClicked(_ sender: Any) {
-        settingsIsVisible = !settingsIsVisible
-        updateSettingsSectionVisibility()
-    }
-    
-    @IBAction private func advancedSettingsButtonTapped(_ sender: Any) {
-        
-    }
-    
     @IBAction private func restartButtonClicked(_ sender: Any) {
-        TimerManager.shared.startTimer()
+        TimerManager.shared.restartTimer()
     }
     
     @IBAction private func pauseButtonClicked(_ sender: Any) {
-        TimerManager.shared.toggleTimer()
+        TimerManager.shared.isPaused = !TimerManager.shared.isPaused
         guard let button = sender as? NSButton else { return }
-        button.image = NSImage(named: NSImage.Name(TimerManager.shared.timerIsPaused ? "Play" : "Pause"))
+        button.image = NSImage(named: NSImage.Name(TimerManager.shared.isPaused ? "Play" : "Pause"))
     }
     
     @IBAction private func likeButtonClicked(_ sender: Any) {
@@ -82,74 +77,7 @@ final class PopoverViewController: NSViewController {
         PopoverManager.shared.togglePopover(sender)
     }
     
-    @IBAction private func restTimeChanged(_ sender: NSPopUpButton) {
-        SettingsManager.update(.restTime, withTimeInSeconds: sender.selectedItem?.tag ?? 0)
-        if TimerManager.shared.status == .restTime {
-            TimerManager.shared.startTimer()
-        }
-    }
-    
-    @IBAction private func workingTimeChanged(_ sender: NSPopUpButton) {
-        SettingsManager.update(.workingTime, withTimeInSeconds: sender.selectedItem?.tag ?? 0)
-        if TimerManager.shared.status == .workingTime {
-            TimerManager.shared.startTimer()
-        }
-    }
-    
-    @IBAction private func totalWorkingTimeChanged(_ sender: NSPopUpButton) {
-        SettingsManager.update(.totalWorkingTime, withTimeInSeconds: sender.selectedItem?.tag ?? 0)
-        TimerManager.shared.restartTotalTimer()
-        updateTotalTimerTextField()
-    }
-    
-    @IBAction private func launchAtSystemStartupChanged(_ sender: NSButton) {
-        StartupManager.startAppOnSystemStartup = sender.state == .on
-    }
-    
-    private func updateTimerTextField() {
-        timerTextField.stringValue = TimeConverter.string(from: TimerManager.shared.timeLeftInSeconds)
-    }
-    
-    private func updateTotalTimerTextField() {
-        totalTimerTextField.stringValue = TimeConverter.string(from: TimerManager.shared.totalTimeLeftInSeconds)
-    }
-    
-    private func setupSettingsSection() {
-        let restTimeInSeconds = SettingsManager.timeInSeconds(for: .restTime)
-        let workingTimeInSeconds = SettingsManager.timeInSeconds(for: .workingTime)
-        let totalWorkingTimeInSeconds = SettingsManager.timeInSeconds(for: .totalWorkingTime)
-        if let restTimeIndex = restTimePopupButton.itemArray.firstIndex(where: { $0.tag == restTimeInSeconds }) {
-            restTimePopupButton.selectItem(at: restTimeIndex)
-        }
-        if let workingTimeIndex = workingTimePopupButton.itemArray.firstIndex(where: { $0.tag == workingTimeInSeconds }) {
-            workingTimePopupButton.selectItem(at: workingTimeIndex)
-        }
-        if let totalWorkingTimeIndex = totalWorkingTimePopupButton.itemArray.firstIndex(where: { $0.tag == totalWorkingTimeInSeconds }) {
-            totalWorkingTimePopupButton.selectItem(at: totalWorkingTimeIndex)
-        }
-        launchAtSystemStartupCheckButton.state = StartupManager.startAppOnSystemStartup ? .on : .off
-        updateSettingsSectionVisibility()
-    }
-    
-    private func updateSettingsSectionVisibility() {
-        settingsButton.title = settingsIsVisible ? NSLocalizedString("Hide settings", comment: "") : NSLocalizedString("Show settings", comment: "")
-        restTimePopupButton.superview?.isHidden = !settingsIsVisible
-        workingTimePopupButton.superview?.isHidden = !settingsIsVisible
-        totalWorkingTimePopupButton.superview?.isHidden = !settingsIsVisible
-        launchAtSystemStartupCheckButton.superview?.isHidden = !settingsIsVisible
-        advancedSettingsButton.isHidden = true
-    }
-    
-    @objc private func tick(notification: NSNotification) {
-        updateTimerTextField()
-        updateTotalTimerTextField()
-    }
-    
-    @objc private func totalTimeIsUp(notification: NSNotification) {
-        totalTimerTextField.textColor = .systemRed
-    }
-    
-    @objc private func totalTimerDidRestart(notification: NSNotification) {
-        totalTimerTextField.textColor = .secondaryLabelColor
+    @IBAction private func settingsButtonTapped(_ sender: Any) {
+        (NSApplication.shared.delegate as? AppDelegate)?.showSettings(sender)
     }
 }

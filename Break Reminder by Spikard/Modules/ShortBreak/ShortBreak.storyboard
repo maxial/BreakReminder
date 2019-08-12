@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="F2z-cM-9cD">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="9SZ-ln-Jr6">
+            <objects>
+                <windowController storyboardIdentifier="ShortBreakWindowController" id="F2z-cM-9cD" customClass="ShortBreakWindowController" customModule="Break_Reminder_by_Spikard" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2ea-4n-5TO">
+                        <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="960" height="540"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="F2z-cM-9cD" id="STt-Qb-duH"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="b9K-Ds-21N" kind="relationship" relationship="window.shadowedContentViewController" id="7tj-CQ-bgz"/>
+                    </connections>
+                </windowController>
+                <customObject id="LKz-kx-32Z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="164"/>
+        </scene>
+        <!--Short Break View Controller-->
+        <scene sceneID="Ffh-xa-fV3">
+            <objects>
+                <viewController storyboardIdentifier="ShortBreakViewController" id="b9K-Ds-21N" customClass="ShortBreakViewController" customModule="Break_Reminder_by_Spikard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="H2g-2A-9g4">
+                        <rect key="frame" x="0.0" y="0.0" width="1200" height="720"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="cog-rO-cOb">
+                                <rect key="frame" x="300" y="-1" width="600" height="242"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B4e-tS-XPD">
+                                <rect key="frame" x="69" y="361" width="1062" height="119"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Look at something far away" id="zPB-9e-eMr">
+                                    <font key="font" metaFont="systemUltraLight" size="100"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SYu-dT-YTQ">
+                                <rect key="frame" x="544" y="63" width="112" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="PZx-6B-MP5"/>
+                                    <constraint firstAttribute="height" constant="30" id="kvg-TP-Bq4"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Skip break" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i8M-RE-RUi">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="skipButtonClicked:" target="b9K-Ds-21N" id="whf-ee-kDD"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FP4-f4-WOL">
+                                <rect key="frame" x="838" y="76" width="64" height="18"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="00:05:00" id="ASi-gd-ONu">
+                                    <font key="font" metaFont="systemThin" size="14"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V6K-MU-QeM">
+                                <rect key="frame" x="298" y="76" width="64" height="18"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="00:00:00" id="gAg-mK-DNn">
+                                    <font key="font" metaFont="systemThin" size="14"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="SYu-dT-YTQ" firstAttribute="top" secondItem="cog-rO-cOb" secondAttribute="centerY" constant="20" id="Caf-15-wV9"/>
+                            <constraint firstItem="cog-rO-cOb" firstAttribute="width" secondItem="H2g-2A-9g4" secondAttribute="width" multiplier="1:2" id="FN2-ZP-95C"/>
+                            <constraint firstItem="FP4-f4-WOL" firstAttribute="centerY" secondItem="SYu-dT-YTQ" secondAttribute="centerY" id="Fdh-g9-exo"/>
+                            <constraint firstAttribute="bottom" secondItem="cog-rO-cOb" secondAttribute="bottom" id="Fj5-es-E32"/>
+                            <constraint firstItem="B4e-tS-XPD" firstAttribute="centerY" secondItem="H2g-2A-9g4" secondAttribute="centerY" multiplier="5:6" id="My9-UR-lZ1"/>
+                            <constraint firstItem="V6K-MU-QeM" firstAttribute="leading" secondItem="cog-rO-cOb" secondAttribute="leading" id="Oot-We-IkA"/>
+                            <constraint firstItem="cog-rO-cOb" firstAttribute="centerX" secondItem="H2g-2A-9g4" secondAttribute="centerX" id="Y4c-ld-3NS"/>
+                            <constraint firstItem="FP4-f4-WOL" firstAttribute="trailing" secondItem="cog-rO-cOb" secondAttribute="trailing" id="bep-Ye-fHs"/>
+                            <constraint firstItem="SYu-dT-YTQ" firstAttribute="centerX" secondItem="cog-rO-cOb" secondAttribute="centerX" id="haY-WO-ESc"/>
+                            <constraint firstItem="V6K-MU-QeM" firstAttribute="centerY" secondItem="SYu-dT-YTQ" secondAttribute="centerY" id="ikg-SN-Ww5"/>
+                            <constraint firstItem="cog-rO-cOb" firstAttribute="height" secondItem="H2g-2A-9g4" secondAttribute="height" multiplier="1:3" id="nuY-5z-CMi"/>
+                            <constraint firstItem="B4e-tS-XPD" firstAttribute="centerX" secondItem="H2g-2A-9g4" secondAttribute="centerX" id="v5t-p9-07m"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="leftTimeLabel" destination="FP4-f4-WOL" id="9X9-5m-2VH"/>
+                        <outlet property="messageLabel" destination="B4e-tS-XPD" id="jeS-CD-12E"/>
+                        <outlet property="pastTimeLabel" destination="V6K-MU-QeM" id="gUF-Rq-q6X"/>
+                        <outlet property="progressIndicator" destination="cog-rO-cOb" id="skL-hd-EAF"/>
+                    </connections>
+                </viewController>
+                <customObject id="KEZ-pK-aDw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="962"/>
+        </scene>
+    </scenes>
+</document>
