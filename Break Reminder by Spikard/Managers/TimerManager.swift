@@ -8,7 +8,7 @@
 
 import Cocoa
 
-private let kDefaultIdle = 30
+private let kDefaultIdle = 0
 
 enum Status {
     
@@ -88,7 +88,9 @@ final class TimerManager {
     }
     
     private func timerDidUpdate() {
-        restartTimerIfUserWasInactive()
+        if timeLeftInSeconds != timeIntervalInSeconds {
+            restartTimerIfUserWasInactive()
+        }
         updateStatusIfTimeIsUp()
         PopoverManager.shared.popoverViewController?.timerDidUpdate()
         (NSApplication.shared.delegate as? AppDelegate)?.timerDidUpdate()
@@ -100,12 +102,12 @@ final class TimerManager {
     }
     
     private func restartTimerIfUserWasInactive() {
-//        let idleTime = Int(systemIdleTime() ?? 0) - kDefaultIdle
-//        let isEnabledShortBreaks = SettingsManager.get(.isEnabledShortBreaks) as! Bool
-//        let breakDuration = SettingsManager.get(isEnabledShortBreaks ? .shortBreakDuration : .longBreakDuration) as! Int
-//        if idleTime > breakDuration {
-//            restartTimer()
-//        }
+        let idleTime = Int(systemIdleTime() ?? 0) - kDefaultIdle
+        let isEnabledShortBreaks = SettingsManager.get(.isEnabledShortBreaks) as! Bool
+        let breakDuration = SettingsManager.get(isEnabledShortBreaks ? .shortBreakDuration : .longBreakDuration) as! Int
+        if idleTime > breakDuration {
+            restartTimer()
+        }
     }
     
     private func updateStatusIfTimeIsUp() {
@@ -134,7 +136,8 @@ final class TimerManager {
     private func systemIdleTime() -> Double? {
         var iterator: io_iterator_t = 0
         defer { IOObjectRelease(iterator) }
-        guard IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("IOHIDSystem"), &iterator) == KERN_SUCCESS else { return nil }
+        let matchingDictionary = IOServiceMatching("IOHIDSystem")
+        guard IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDictionary, &iterator) == KERN_SUCCESS else { return nil }
         
         let entry: io_registry_entry_t = IOIteratorNext(iterator)
         defer { IOObjectRelease(entry) }
