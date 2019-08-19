@@ -42,10 +42,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func timerDidUpdate() {
         (shortBreakWindowController?.contentViewController as? ShortBreakViewController)?.timerDidUpdate()
         (longBreakWindowController?.contentViewController as? LongBreakViewController)?.timerDidUpdate()
+        updateStatusItemTimer()
     }
     
     func sessionTimerDidUpdate() {
         statusItem.button?.image = NSImage(named: NSImage.Name(TimerManager.shared.sessionTimeLeftInSeconds == 0 ? kStatusItemIconRedName : kStatusItemIconName))
+    }
+    
+    func updateStatusItemTimer() {
+        let isDisplayTimerOnStatusBar = SettingsManager.get(.isDisplayTimerOnStatusBar) as! Bool
+        if isDisplayTimerOnStatusBar {
+            let time = " " + TimeConverter.timerString(from: TimerManager.shared.timeLeftInSeconds, truncateHoursIfZero: true)
+            statusItem.attributedTitle = NSAttributedString(string: time, attributes: [.font : NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .medium)])
+        } else {
+            statusItem.attributedTitle = nil
+        }
     }
     
     func timeIsUp() {

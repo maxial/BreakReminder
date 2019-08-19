@@ -31,12 +31,11 @@ final class PopoverViewController: NSViewController {
     }
     
     func sessionTimerDidUpdate() {
-        sessionTimerLabel?.stringValue = TimeConverter.string(from: TimerManager.shared.sessionTimeLeftInSeconds)
+        sessionTimerLabel?.stringValue = TimeConverter.timerString(from: TimerManager.shared.sessionTimeLeftInSeconds)
         sessionTimerLabel?.textColor = TimerManager.shared.sessionTimeLeftInSeconds == 0 ? .systemRed : .secondaryLabelColor
     }
     
     func updateShortBreaksStackView() {
-        shortBreaksStackView?.isHidden = !(SettingsManager.get(.isEnabledShortBreaks) as! Bool)
         let numberOfShortBreaks = SettingsManager.get(.numberOfShortBreaks) as! Int
         shortBreaksStackView?.arrangedSubviews.enumerated().forEach { i, view in
             view.isHidden = i >= numberOfShortBreaks

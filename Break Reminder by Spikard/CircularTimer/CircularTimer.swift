@@ -50,7 +50,7 @@ public final class CircularTimer: NSView {
     public override func updateLayer() {
         trackCircle?.fillColor = nil
         trackCircle?.strokeColor = NSColor.tertiaryLabelColor.cgColor
-        highlightedCircle?.strokeColor = NSColor.secondaryLabelColor.cgColor
+        highlightedCircle?.strokeColor = NSColor.labelColor.cgColor
         timerLabel?.color = NSColor.labelColor
     }
     
@@ -70,7 +70,7 @@ public final class CircularTimer: NSView {
         highlightedCircle!.lineWidth = highlightedLineWidth
         layer?.addSublayer(highlightedCircle!)
         
-        timerLabel = CATextLayer(text: TimeConverter.string(from: timeIntervalInSeconds))
+        timerLabel = CATextLayer(text: TimeConverter.timerString(from: timeIntervalInSeconds))
         timerLabel!.fontSize = bounds.width < bounds.height ? bounds.width * 0.2 : bounds.height * 0.2
         timerLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: timerLabel!.preferredFrameSize().height)
         timerLabel!.position = CGPoint(x: bounds.midX, y: bounds.midY)
@@ -82,6 +82,6 @@ public final class CircularTimer: NSView {
     
     private func updateProgress() {
         highlightedCircle?.progress = (Double(timeLeftInSeconds) / Double(timeIntervalInSeconds)).clamped(to: 0...1)
-        timerLabel?.string = TimeConverter.string(from: timeLeftInSeconds)
+        timerLabel?.string = TimeConverter.timerString(from: timeLeftInSeconds)
     }
 }

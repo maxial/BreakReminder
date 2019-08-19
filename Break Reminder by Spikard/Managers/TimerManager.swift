@@ -8,7 +8,7 @@
 
 import Cocoa
 
-private let kDefaultIdle = 0
+private let kDefaultIdle = 30
 
 enum Status {
     
@@ -41,6 +41,8 @@ final class TimerManager {
     // MARK: - Private properties
     
     private var timer: Timer?
+    private var notifiedThatBreakIsComingSoon: Bool = false
+    private var skipNotification: Bool = false
     
     // MARK: - Public methods
     
@@ -50,6 +52,7 @@ final class TimerManager {
     
     func restartTimer() {
         timeLeftInSeconds = timeIntervalInSeconds
+        notifiedThatBreakIsComingSoon = false
     }
     
     func restartSessionTimer() {
@@ -57,6 +60,7 @@ final class TimerManager {
     }
     
     func skipBreak() {
+        skipNotification = true
         timeLeftInSeconds = 0
     }
     
@@ -88,9 +92,13 @@ final class TimerManager {
     }
     
     private func timerDidUpdate() {
-        if timeLeftInSeconds != timeIntervalInSeconds {
+        if timeLeftInSeconds != timeIntervalInSeconds, status == .work {
             restartTimerIfUserWasInactive()
         }
+        if !skipNotification {
+            NotificationManager.shared.notifyIfNeeded()
+        }
+        skipNotification = false
         updateStatusIfTimeIsUp()
         PopoverManager.shared.popoverViewController?.timerDidUpdate()
         (NSApplication.shared.delegate as? AppDelegate)?.timerDidUpdate()
@@ -103,31 +111,31 @@ final class TimerManager {
     
     private func restartTimerIfUserWasInactive() {
         let idleTime = Int(systemIdleTime() ?? 0) - kDefaultIdle
-        let isEnabledShortBreaks = SettingsManager.get(.isEnabledShortBreaks) as! Bool
-        let breakDuration = SettingsManager.get(isEnabledShortBreaks ? .shortBreakDuration : .longBreakDuration) as! Int
+        let numberOfShortBreaks = SettingsManager.get(.numberOfShortBreaks) as! Int
+        let isShortBreakNext = numberOfShortBreaks > 0 && currentShortBreak < numberOfShortBreaks
+        let breakDuration = SettingsManager.get(isShortBreakNext ? .shortBreakDuration : .longBreakDuration) as! Int
         if idleTime > breakDuration {
+            if Double(timeLeftInSeconds) < 0.1 * Double(timeIntervalInSeconds) && isShortBreakNext {
+                currentShortBreak += 1
+            }
             restartTimer()
         }
     }
     
     private func updateStatusIfTimeIsUp() {
-        guard timeLeftInSeconds == 0 else { return }
+        guard timeLeftInSeconds <= 0 else { return }
         
         switch status {
         case .work:
-            let isEnabledShortBreaks = SettingsManager.get(.isEnabledShortBreaks) as! Bool
-            if isEnabledShortBreaks {
-                currentShortBreak += 1
-                if currentShortBreak > SettingsManager.get(.numberOfShortBreaks) as! Int {
-                    resetShortBreaks()
-                    status = .longBreak
-                } else {
-                    status = .shortBreak
-                }
-            } else {
+            currentShortBreak += 1
+            if currentShortBreak > SettingsManager.get(.numberOfShortBreaks) as! Int {
+                resetShortBreaks()
                 status = .longBreak
+            } else {
+                status = .shortBreak
             }
-        case .shortBreak, .longBreak: status = .work
+        case .shortBreak, .longBreak:
+            status = .work
         }
         
         (NSApplication.shared.delegate as? AppDelegate)?.timeIsUp()

@@ -33,8 +33,8 @@ final class ShortBreakViewController: NSViewController {
     func timerDidUpdate() {
         let percentage = 1 - Double(TimerManager.shared.timeLeftInSeconds) / Double(SettingsManager.get(.shortBreakDuration) as! Int)
         progressIndicator.doubleValue = percentage
-        pastTimeLabel.stringValue = TimeConverter.string(from: SettingsManager.get(.shortBreakDuration) as! Int - TimerManager.shared.timeLeftInSeconds)
-        leftTimeLabel.stringValue = "-" + TimeConverter.string(from: TimerManager.shared.timeLeftInSeconds)
+        pastTimeLabel.stringValue = TimeConverter.timerString(from: SettingsManager.get(.shortBreakDuration) as! Int - TimerManager.shared.timeLeftInSeconds)
+        leftTimeLabel.stringValue = "-" + TimeConverter.timerString(from: TimerManager.shared.timeLeftInSeconds)
     }
     
     // MARK: - Private methods
