@@ -41,7 +41,6 @@ final class TimerManager {
     // MARK: - Private properties
     
     private var timer: Timer?
-    private var notifiedThatBreakIsComingSoon: Bool = false
     private var skipNotification: Bool = false
     
     // MARK: - Public methods
@@ -52,7 +51,7 @@ final class TimerManager {
     
     func restartTimer() {
         timeLeftInSeconds = timeIntervalInSeconds
-        notifiedThatBreakIsComingSoon = false
+        NotificationManager.shared.reset()
     }
     
     func restartSessionTimer() {
