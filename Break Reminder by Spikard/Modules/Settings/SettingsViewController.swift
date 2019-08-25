@@ -8,6 +8,11 @@
 
 import Cocoa
 
+enum SettingsItem: Int {
+    
+    case general, notifications, about
+}
+
 // MARK: - SettingsViewController
 
 final class SettingsViewController: NSTabViewController {
@@ -16,13 +21,7 @@ final class SettingsViewController: NSTabViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabView.tabViewItem(at: 0).image = NSImage(named: NSImage.preferencesGeneralName)
+        tabView.tabViewItem(at: SettingsItem.general.rawValue).image = NSImage(named: NSImage.preferencesGeneralName)
+        tabView.tabViewItem(at: SettingsItem.about.rawValue).image = NSImage(named: NSImage.advancedName)
     }
-    
-//    override func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-//        var arr = super.toolbarDefaultItemIdentifiers(toolbar)
-//        arr.insert(NSToolbarItem.Identifier.flexibleSpace, at: 0)
-//        arr.append(NSToolbarItem.Identifier.flexibleSpace)
-//        return arr
-//    }
 }

@@ -22,6 +22,7 @@
 		424C49FF229C59AC00CBFF18 /* NSNotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424C49FE229C59AC00CBFF18 /* NSNotificationNameExtension.swift */; };
 		42602B4022F8391100F02667 /* CircularTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42602B3F22F8391100F02667 /* CircularTimer.swift */; };
 		42602B4A22F89A4900F02667 /* CATextLayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42602B4922F89A4900F02667 /* CATextLayerExtension.swift */; };
+		42688E9E2310901500F74C28 /* NSSoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42688E9D2310901500F74C28 /* NSSoundExtension.swift */; };
 		426E61A2229AEAD000E876F9 /* LongBreakWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426E61A0229AEAD000E876F9 /* LongBreakWindowController.swift */; };
 		4283F0352299D5C90051FAD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283F0342299D5C90051FAD6 /* AppDelegate.swift */; };
 		4283F0372299D5C90051FAD6 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283F0362299D5C90051FAD6 /* PopoverViewController.swift */; };
@@ -29,8 +30,8 @@
 		4283F03C2299D5CA0051FAD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4283F03A2299D5CA0051FAD6 /* Main.storyboard */; };
 		4283F0452299D6510051FAD6 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283F0442299D6510051FAD6 /* NSViewControllerExtension.swift */; };
 		4286B06B23068B8C007ADA4A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 4286B06A23068B8C007ADA4A /* Localizable.stringsdict */; };
-		4286B06D2306945E007ADA4A /* BeforeBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4286B06C2306945D007ADA4A /* BeforeBreak.wav */; };
-		4286B06F230697D9007ADA4A /* AfterBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4286B06E230697D9007ADA4A /* AfterBreak.wav */; };
+		4286B06D2306945E007ADA4A /* Spikard 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4286B06C2306945D007ADA4A /* Spikard 1.wav */; };
+		4286B06F230697D9007ADA4A /* Spikard 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4286B06E230697D9007ADA4A /* Spikard 2.wav */; };
 		428F922E22EC778B00583062 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F922C22EC778B00583062 /* SettingsViewController.swift */; };
 		428F923122EC77B400583062 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428F923022EC77B400583062 /* Settings.storyboard */; };
 		4290C8F3229A5BD400BC8ECC /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4290C8F2229A5BD400BC8ECC /* EventMonitor.swift */; };
@@ -55,6 +56,7 @@
 		42D72592229D0739008AC93E /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D72591229D0739008AC93E /* StartupManager.swift */; };
 		42D72595229D0AAC008AC93E /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D72594229D0AAC008AC93E /* StartupManager.swift */; };
 		42D725D4229D9043008AC93E /* Popover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42D725D3229D9043008AC93E /* Popover.storyboard */; };
+		42E9349223105A2100AC5C72 /* AboutSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9349123105A2100AC5C72 /* AboutSettingsViewController.swift */; };
 		42FD9BC5229E503A0026D379 /* FirstWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FD9BC4229E503A0026D379 /* FirstWindow.storyboard */; };
 		42FD9BC7229E50620026D379 /* FirstWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FD9BC6229E50620026D379 /* FirstWindowController.swift */; };
 		42FD9BC9229E556D0026D379 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FD9BC8229E556D0026D379 /* FirstViewController.swift */; };
@@ -91,6 +93,7 @@
 		424C49FE229C59AC00CBFF18 /* NSNotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationNameExtension.swift; sourceTree = "<group>"; };
 		42602B3F22F8391100F02667 /* CircularTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTimer.swift; sourceTree = "<group>"; };
 		42602B4922F89A4900F02667 /* CATextLayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATextLayerExtension.swift; sourceTree = "<group>"; };
+		42688E9D2310901500F74C28 /* NSSoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSoundExtension.swift; sourceTree = "<group>"; };
 		426E61A0229AEAD000E876F9 /* LongBreakWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongBreakWindowController.swift; sourceTree = "<group>"; };
 		4283F0312299D5C90051FAD6 /* Break Reminder by Spikard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Break Reminder by Spikard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4283F0342299D5C90051FAD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,8 +104,8 @@
 		4283F03E2299D5CA0051FAD6 /* SpikardBreakReminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpikardBreakReminder.entitlements; sourceTree = "<group>"; };
 		4283F0442299D6510051FAD6 /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
 		4286B06A23068B8C007ADA4A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
-		4286B06C2306945D007ADA4A /* BeforeBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BeforeBreak.wav; sourceTree = "<group>"; };
-		4286B06E230697D9007ADA4A /* AfterBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AfterBreak.wav; sourceTree = "<group>"; };
+		4286B06C2306945D007ADA4A /* Spikard 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Spikard 1.wav"; sourceTree = "<group>"; };
+		4286B06E230697D9007ADA4A /* Spikard 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Spikard 2.wav"; sourceTree = "<group>"; };
 		428F922C22EC778B00583062 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		428F923022EC77B400583062 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		4290C8F2229A5BD400BC8ECC /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 		42D72591229D0739008AC93E /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		42D72594229D0AAC008AC93E /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		42D725D3229D9043008AC93E /* Popover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popover.storyboard; sourceTree = "<group>"; };
+		42E9349123105A2100AC5C72 /* AboutSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsViewController.swift; sourceTree = "<group>"; };
 		42FD9BC4229E503A0026D379 /* FirstWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstWindow.storyboard; sourceTree = "<group>"; };
 		42FD9BC6229E50620026D379 /* FirstWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWindowController.swift; sourceTree = "<group>"; };
 		42FD9BC8229E556D0026D379 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				428F922C22EC778B00583062 /* SettingsViewController.swift */,
 				424BC1D42307E1A100AAAA7F /* GeneralSettingsViewController.swift */,
 				424BC1D62307E20F00AAAA7F /* NotificationsSettingsViewController.swift */,
+				42E9349123105A2100AC5C72 /* AboutSettingsViewController.swift */,
 				428F923022EC77B400583062 /* Settings.storyboard */,
 			);
 			path = Settings;
@@ -279,6 +284,7 @@
 				42B3BE4E22FD7521005C50A0 /* CAShapeLayerExtension.swift */,
 				42602B4922F89A4900F02667 /* CATextLayerExtension.swift */,
 				42B3BE4C22FD74EE005C50A0 /* NSBezierPathExtension.swift */,
+				42688E9D2310901500F74C28 /* NSSoundExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,8 +292,8 @@
 		4290C8F7229A7FD800BC8ECC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4286B06C2306945D007ADA4A /* BeforeBreak.wav */,
-				4286B06E230697D9007ADA4A /* AfterBreak.wav */,
+				4286B06C2306945D007ADA4A /* Spikard 1.wav */,
+				4286B06E230697D9007ADA4A /* Spikard 2.wav */,
 				4283F0382299D5CA0051FAD6 /* Assets.xcassets */,
 				4283F03D2299D5CA0051FAD6 /* Info.plist */,
 				4286B06A23068B8C007ADA4A /* Localizable.stringsdict */,
@@ -433,9 +439,9 @@
 				42FD9BC5229E503A0026D379 /* FirstWindow.storyboard in Resources */,
 				42B3BE5422FD9C2D005C50A0 /* ShortBreak.storyboard in Resources */,
 				4283F0392299D5CA0051FAD6 /* Assets.xcassets in Resources */,
-				4286B06D2306945E007ADA4A /* BeforeBreak.wav in Resources */,
+				4286B06D2306945E007ADA4A /* Spikard 1.wav in Resources */,
 				4283F03C2299D5CA0051FAD6 /* Main.storyboard in Resources */,
-				4286B06F230697D9007ADA4A /* AfterBreak.wav in Resources */,
+				4286B06F230697D9007ADA4A /* Spikard 2.wav in Resources */,
 				428F923122EC77B400583062 /* Settings.storyboard in Resources */,
 				4286B06B23068B8C007ADA4A /* Localizable.stringsdict in Resources */,
 				4290C903229AC4F200BC8ECC /* LongBreak.storyboard in Resources */,
@@ -476,9 +482,11 @@
 				4290C8FB229A81D900BC8ECC /* SettingsManager.swift in Sources */,
 				42B3BE5C22FD9CC7005C50A0 /* ShortBreakViewController.swift in Sources */,
 				4283F0452299D6510051FAD6 /* NSViewControllerExtension.swift in Sources */,
+				42E9349223105A2100AC5C72 /* AboutSettingsViewController.swift in Sources */,
 				424C49E2229C23EC00CBFF18 /* NSFontExtension.swift in Sources */,
 				42FD9BC7229E50620026D379 /* FirstWindowController.swift in Sources */,
 				42A993E723093E800007A118 /* NotificationManager.swift in Sources */,
+				42688E9E2310901500F74C28 /* NSSoundExtension.swift in Sources */,
 				42FD9BC9229E556D0026D379 /* FirstViewController.swift in Sources */,
 				42D687C4229BC29500FDCA27 /* NSViewExtension.swift in Sources */,
 				421B0E19229B096C00C069CE /* NSWindowControllerExtension.swift in Sources */,
