@@ -1,3 +1,3 @@
 # Break Reminder by Spikard
 
-Privacy Policy: maxial.github.io
+[Privacy Policy](maxial.github.io)
